@@ -1,7 +1,7 @@
 {
   "feed": "nado-card-redemptions",
-  "schema": 2,
-  "updated": "2026-07-22",
+  "schema": 3,
+  "updated": "2026-07-23",
   "publisher": "nado-card 官方整理",
   "options": [
     {
@@ -200,6 +200,20 @@
       "threshold": "限平安好车主信用卡，单笔≥88元网络消费",
       "url": "http://creditcard.pingan.com/kazhongjieshao/chezhuka.shtml",
       "note": "来源: 新浪财经+平安信用卡官方(好车主卡)整理 ; 检索: 2026-07-22 ; 以平安口袋银行APP实际展示为准"
+    },
+    {
+      "id": "pingan-haochezhu-zunxiang-perk",
+      "title": "好车主卡尊享版 · 权益兑换资格券",
+      "otype": "perk",
+      "kind": "normal",
+      "reward": "每月满足条件得6张权益兑换资格券（可兑洗车/加油/代驾等），资格券获得后有效期1个月，请当月用完",
+      "threshold": "每月刷满6笔、每笔≥388元",
+      "card_match": {
+        "bank": "平安银行",
+        "name_kw": "好车主"
+      },
+      "url": "http://creditcard.pingan.com/kazhongjieshao/chezhuka.shtml",
+      "note": "来源: 平安信用卡官方(好车主卡)+公众号聚合整理 ; 检索: 2026-07-23 ; 好车主卡有多个版本(标准/尊享版等)，具体权益/笔数门槛以你所持版本及口袋银行APP为准"
     }
   ]
 }
