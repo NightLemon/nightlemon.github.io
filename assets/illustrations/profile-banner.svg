@@ -8,8 +8,8 @@
     <path d="M84 102h43" stroke-width="3"/>
   </g>
   <text x="84" y="202" fill="#242b23" font-family="Arial, sans-serif" font-size="72" font-weight="700" letter-spacing="-2">NightLemon</text>
-  <text x="88" y="251" fill="#242b23" font-family="Arial, sans-serif" font-size="24" letter-spacing="1">Small tools. Real life.</text>
-  <text x="88" y="306" fill="#59634f" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="21">把生活里的小麻烦，做成顺手的工具。</text>
+  <text x="88" y="251" fill="#242b23" font-family="Arial, sans-serif" font-size="24" letter-spacing="1">Personal projects</text>
+  <text x="88" y="306" fill="#59634f" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="21">航空查询、生活工具与个人 Agent。</text>
 
   <!-- original lemon mark -->
   <g transform="translate(932 78) rotate(-12)">
