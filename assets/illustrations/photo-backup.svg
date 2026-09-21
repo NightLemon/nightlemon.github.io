@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="760" viewBox="0 0 1160 760" role="img" aria-labelledby="title">
+  <title id="title">Home Photo Backup</title>
+  <rect width="1160" height="760" fill="#fbf8f1"/>
+
+  <g fill="none" stroke="#27322d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M86 112h70" stroke="#ee806e" stroke-width="8"/>
+    <path d="M86 130h38" stroke="#27322d"/>
+  </g>
+  <text x="86" y="190" fill="#27322d" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="48" font-weight="700" letter-spacing="-1">Home Photo Backup</text>
+  <text x="88" y="238" fill="#27322d" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="25">手机 → 家里的存储</text>
+  <text x="88" y="304" fill="#8d5147" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="18" letter-spacing="2">选择 · 传输 · 校验</text>
+  <text x="1074" y="84" text-anchor="end" fill="#8d5147" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="16" letter-spacing="3">流程示意</text>
+
+  <!-- phone -->
+  <g transform="translate(102 382)">
+    <rect x="0" y="0" width="176" height="286" rx="27" fill="#fffdf7"/>
+    <rect x="12" y="42" width="152" height="188" rx="12" fill="#f6c0ac" stroke="#27322d"/>
+    <path d="M24 183l37-41 27 26 24-31 40 46" stroke="#27322d" fill="none"/>
+    <path d="M25 65h52" stroke="#ee806e" stroke-width="8"/>
+    <circle cx="88" cy="18" r="5" fill="#27322d" stroke="none"/>
+    <path d="M68 254h40"/>
+    <circle cx="126" cy="91" r="10" fill="#fbf8f1"/>
+  </g>
+  <g transform="translate(116 697)" fill="#27322d">
+    <circle cx="0" cy="0" r="5"/><circle cx="18" cy="0" r="5"/><circle cx="36" cy="0" r="5"/>
+  </g>
+
+  <!-- transfer rail and blocks -->
+  <path d="M316 511H804" stroke="#27322d" stroke-width="2" stroke-dasharray="2 14"/>
+  <path d="M316 511h74m52 0h70m52 0h70m52 0h70" stroke="#ee806e" stroke-width="7" stroke-linecap="round"/>
+  <g stroke="#27322d" stroke-width="2">
+    <rect x="372" y="466" width="42" height="42" rx="5" fill="#ee806e"/>
+    <rect x="438" y="524" width="42" height="42" rx="5" fill="#ffd5c6"/>
+    <rect x="506" y="466" width="42" height="42" rx="5" fill="#fffdf7"/>
+    <rect x="574" y="524" width="42" height="42" rx="5" fill="#ee806e"/>
+    <rect x="642" y="466" width="42" height="42" rx="5" fill="#ffd5c6"/>
+    <rect x="710" y="524" width="42" height="42" rx="5" fill="#fffdf7"/>
+  </g>
+  <g fill="#27322d">
+    <circle cx="393" cy="487" r="4"/><circle cx="461" cy="545" r="4"/><circle cx="529" cy="487" r="4"/>
+    <circle cx="597" cy="545" r="4"/><circle cx="665" cy="487" r="4"/><circle cx="731" cy="545" r="4"/>
+  </g>
+  <path d="M775 511h35" stroke="#27322d" stroke-width="2"/>
+  <path d="m798 499 14 12-14 12" fill="none" stroke="#27322d" stroke-width="2"/>
+
+  <!-- home computer -->
+  <g transform="translate(826 386)">
+    <rect x="0" y="0" width="196" height="130" rx="12" fill="#fffdf7"/>
+    <rect x="14" y="14" width="168" height="91" rx="6" fill="#e6eee5" stroke="#27322d"/>
+    <path d="M80 130v26m-37 0h74"/>
+    <path d="M42 35h38v29H42zm46 0h38v29H88zm46 0h38v29h-38zM42 72h38v20H42zm46 0h38v20H88zm46 0h38v20h-38z" fill="#ee806e" stroke="#27322d" stroke-width="2"/>
+  </g>
+
+  <!-- storage cabinet -->
+  <g transform="translate(969 364)">
+    <path d="M0 22 24 0h118v285H0Z" fill="#f4d3bd"/>
+    <path d="M24 0v285M0 22h142"/>
+    <rect x="24" y="45" width="96" height="63" rx="8" fill="#fffdf7"/>
+    <rect x="24" y="128" width="96" height="63" rx="8" fill="#fffdf7"/>
+    <rect x="24" y="211" width="96" height="52" rx="8" fill="#ee806e"/>
+    <circle cx="102" cy="76" r="5" fill="#27322d" stroke="none"/>
+    <circle cx="102" cy="159" r="5" fill="#27322d" stroke="none"/>
+    <path d="M43 74h41m-41 83h41m-41 78h41"/>
+  </g>
+  <path d="M1010 669h126" stroke="#27322d"/>
+  <path d="M1058 695h42" stroke="#ee806e" stroke-width="8"/>
+
+  <!-- quiet framing marks -->
+  <g fill="none" stroke="#ee806e" stroke-width="3" stroke-linecap="round">
+    <path d="M86 664v28m-14-14h28"/><path d="M1074 590v40m-20-20h40"/>
+  </g>
+</svg>

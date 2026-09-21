@@ -1,0 +1,22 @@
+{
+  "status": "approved-for-publication",
+  "profile": {
+    "bio": "把生活里的小麻烦，做成顺手的工具。Aviation · Personal tools · Agents",
+    "blog": "https://nightlemon.github.io/"
+  },
+  "pinnedRepositories": [
+    "NightLemon/cn-aircraft-finder",
+    "NightLemon/fund-dashboard",
+    "NightLemon/flight-map",
+    "NightLemon/photo-map-app",
+    "NightLemon/nado-agent",
+    "NightLemon/nightlemon.github.io"
+  ],
+  "repositoryDescriptions": {
+    "fund-dashboard": "基金净值、估值与个人组合看板，区分已公布数据和模型估算。",
+    "nado-agent": "多机器 Agent 任务网关，支持任务调度、执行状态与产物追踪。",
+    "nightlemon.github.io": "NightLemon 的个人作品集：航空、生活工具与 Agent 实验。",
+    "personal-agent-pages": "Personal Agent 的公开前端部署产物；使用需要配置个人后端并配对。",
+    "photo-map-app": "照片地图与相册工具，用地点、时间和路线重新浏览影像；持续开发中。"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "nightlemon-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "devDependencies": {
+    "github-markdown-css": "^5.9.0",
+    "marked": "^18.0.13",
+    "playwright": "^1.63.0",
+    "prettier": "^4.0.0-alpha.13"
+  }
+}
