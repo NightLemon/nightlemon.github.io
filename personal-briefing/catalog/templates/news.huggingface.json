@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "news.huggingface",
+  "version": "1.0.0",
+  "name": "Hugging Face Blog",
+  "outputType": "article",
+  "description": "Hugging Face 官方及社区技术博客，保留作者归属；作者文章不等同独立新闻报道。",
+  "publisherType": "community",
+  "defaultSectionId": "technology",
+  "minEngineVersion": "1.0.0",
+  "connector": {
+    "type": "rss",
+    "url": "https://huggingface.co/blog/feed.xml",
+    "allowedHosts": [
+      "huggingface.co"
+    ]
+  },
+  "parameters": {
+    "limit": {
+      "type": "integer",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "withinHours": {
+      "type": "integer",
+      "default": 48,
+      "minimum": 1,
+      "maximum": 87600
+    }
+  },
+  "pipeline": [
+    {
+      "op": "filter",
+      "field": "publishedAt",
+      "operator": "within_hours",
+      "value": {
+        "parameterRef": "withinHours"
+      }
+    },
+    {
+      "op": "dedupe",
+      "keys": [
+        "canonicalUrl"
+      ]
+    },
+    {
+      "op": "sort",
+      "field": "publishedAt",
+      "direction": "desc"
+    },
+    {
+      "op": "limit",
+      "value": {
+        "parameterRef": "limit"
+      }
+    },
+    {
+      "op": "summarize",
+      "language": "zh-CN",
+      "maxChars": 180
+    }
+  ],
+  "articleFetch": {
+    "allowedHosts": [
+      "huggingface.co"
+    ],
+    "bodySelectors": [
+      ".blog-content > div.relative.overflow-clip"
+    ],
+    "excludeSelectors": [
+      ".social-share",
+      ".share-tools",
+      ".related-posts",
+      ".related-articles",
+      ".ad-container",
+      ".advertisement-container"
+    ]
+  }
+}

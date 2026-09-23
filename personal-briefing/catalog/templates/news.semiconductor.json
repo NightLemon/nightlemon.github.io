@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "id": "news.semiconductor",
+  "version": "1.0.0",
+  "name": "Semiconductor Engineering",
+  "outputType": "article",
+  "description": "芯片产业报道、技术文章和论文短讯；摘要保留原文文体及研究条件，短讯不扩写成完整报道。",
+  "publisherType": "editorial",
+  "defaultSectionId": "technology",
+  "minEngineVersion": "1.0.0",
+  "connector": {
+    "type": "rss",
+    "url": "https://semiengineering.com/feed/",
+    "allowedHosts": [
+      "semiengineering.com",
+      "www.semiengineering.com"
+    ]
+  },
+  "parameters": {
+    "limit": {
+      "type": "integer",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "withinHours": {
+      "type": "integer",
+      "default": 48,
+      "minimum": 1,
+      "maximum": 87600
+    }
+  },
+  "pipeline": [
+    {
+      "op": "filter",
+      "field": "publishedAt",
+      "operator": "within_hours",
+      "value": {
+        "parameterRef": "withinHours"
+      }
+    },
+    {
+      "op": "dedupe",
+      "keys": [
+        "canonicalUrl"
+      ]
+    },
+    {
+      "op": "sort",
+      "field": "publishedAt",
+      "direction": "desc"
+    },
+    {
+      "op": "limit",
+      "value": {
+        "parameterRef": "limit"
+      }
+    },
+    {
+      "op": "summarize",
+      "language": "zh-CN",
+      "maxChars": 180
+    }
+  ],
+  "articleFetch": {
+    "allowedHosts": [
+      "semiengineering.com",
+      "www.semiengineering.com"
+    ],
+    "bodySelectors": [
+      ".post_cnt"
+    ],
+    "excludeSelectors": [
+      ".social-share",
+      ".share-tools",
+      ".related-posts",
+      ".related-articles",
+      ".ad-container",
+      ".advertisement-container"
+    ]
+  }
+}

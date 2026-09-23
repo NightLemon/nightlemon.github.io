@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "news.ithome",
+  "version": "1.0.0",
+  "name": "IT之家",
+  "outputType": "article",
+  "description": "IT之家综合科技报道；按标题排除常见导购和优惠条目，科技栏目优先 LLM、芯片与存储。",
+  "publisherType": "editorial",
+  "defaultSectionId": "technology",
+  "minEngineVersion": "1.0.0",
+  "connector": {
+    "type": "rss",
+    "url": "https://www.ithome.com/rss/",
+    "allowedHosts": [
+      "www.ithome.com"
+    ]
+  },
+  "parameters": {
+    "limit": {
+      "type": "integer",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "withinHours": {
+      "type": "integer",
+      "default": 48,
+      "minimum": 1,
+      "maximum": 87600
+    }
+  },
+  "pipeline": [
+    {
+      "op": "filter",
+      "field": "title",
+      "operator": "not_contains",
+      "value": "券后"
+    },
+    {
+      "op": "filter",
+      "field": "title",
+      "operator": "not_contains",
+      "value": "优惠券"
+    },
+    {
+      "op": "filter",
+      "field": "title",
+      "operator": "not_contains",
+      "value": "手慢无"
+    },
+    {
+      "op": "filter",
+      "field": "title",
+      "operator": "not_contains",
+      "value": "限时特惠"
+    },
+    {
+      "op": "filter",
+      "field": "title",
+      "operator": "not_contains",
+      "value": "限时直降"
+    },
+    {
+      "op": "filter",
+      "field": "title",
+      "operator": "not_contains",
+      "value": "值得买"
+    },
+    {
+      "op": "filter",
+      "field": "title",
+      "operator": "not_contains",
+      "value": "红包"
+    },
+    {
+      "op": "filter",
+      "field": "title",
+      "operator": "not_contains",
+      "value": "限时秒杀"
+    },
+    {
+      "op": "filter",
+      "field": "publishedAt",
+      "operator": "within_hours",
+      "value": {
+        "parameterRef": "withinHours"
+      }
+    },
+    {
+      "op": "dedupe",
+      "keys": [
+        "canonicalUrl"
+      ]
+    },
+    {
+      "op": "sort",
+      "field": "publishedAt",
+      "direction": "desc"
+    },
+    {
+      "op": "limit",
+      "value": {
+        "parameterRef": "limit"
+      }
+    },
+    {
+      "op": "summarize",
+      "language": "zh-CN",
+      "maxChars": 180
+    }
+  ],
+  "articleFetch": {
+    "allowedHosts": [
+      "www.ithome.com",
+      "ithome.com"
+    ],
+    "bodySelectors": [
+      "#paragraph"
+    ],
+    "excludeSelectors": [
+      ".social-share",
+      ".share-tools",
+      ".related-posts",
+      ".related-articles",
+      ".ad-container",
+      ".advertisement-container"
+    ]
+  }
+}

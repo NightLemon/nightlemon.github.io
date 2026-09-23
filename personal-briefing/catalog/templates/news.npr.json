@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "news.npr",
+  "version": "1.0.0",
+  "name": "NPR World",
+  "outputType": "article",
+  "description": "NPR World 国际报道与采访；优先文字转录，无文字正文的音频条目不作为精选。",
+  "publisherType": "editorial",
+  "defaultSectionId": "world",
+  "minEngineVersion": "1.0.0",
+  "connector": {
+    "type": "rss",
+    "url": "https://feeds.npr.org/1004/rss.xml",
+    "allowedHosts": [
+      "feeds.npr.org"
+    ]
+  },
+  "parameters": {
+    "limit": {
+      "type": "integer",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "withinHours": {
+      "type": "integer",
+      "default": 48,
+      "minimum": 1,
+      "maximum": 87600
+    }
+  },
+  "pipeline": [
+    {
+      "op": "filter",
+      "field": "publishedAt",
+      "operator": "within_hours",
+      "value": {
+        "parameterRef": "withinHours"
+      }
+    },
+    {
+      "op": "dedupe",
+      "keys": [
+        "canonicalUrl"
+      ]
+    },
+    {
+      "op": "sort",
+      "field": "publishedAt",
+      "direction": "desc"
+    },
+    {
+      "op": "limit",
+      "value": {
+        "parameterRef": "limit"
+      }
+    },
+    {
+      "op": "summarize",
+      "language": "zh-CN",
+      "maxChars": 180
+    }
+  ],
+  "articleFetch": {
+    "allowedHosts": [
+      "feeds.npr.org",
+      "www.npr.org",
+      "npr.org",
+      "text.npr.org"
+    ],
+    "bodySelectors": [
+      ".transcript.storytext",
+      "#storytext",
+      ".storytext"
+    ],
+    "excludeSelectors": [
+      ".social-share",
+      ".share-tools",
+      ".related-posts",
+      ".related-articles",
+      ".ad-container",
+      ".advertisement-container",
+      ".icn-story-transcript-wrap"
+    ],
+    "minCharacters": 200
+  }
+}

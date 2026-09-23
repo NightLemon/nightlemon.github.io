@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "news.bbc",
+  "version": "1.0.0",
+  "name": "BBC World",
+  "outputType": "article",
+  "description": "BBC World 国际报道；新闻编辑机构来源，保留报道原文与发布时间。",
+  "publisherType": "editorial",
+  "defaultSectionId": "world",
+  "minEngineVersion": "1.0.0",
+  "connector": {
+    "type": "rss",
+    "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+    "allowedHosts": [
+      "feeds.bbci.co.uk"
+    ]
+  },
+  "parameters": {
+    "limit": {
+      "type": "integer",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "withinHours": {
+      "type": "integer",
+      "default": 48,
+      "minimum": 1,
+      "maximum": 87600
+    }
+  },
+  "pipeline": [
+    {
+      "op": "filter",
+      "field": "publishedAt",
+      "operator": "within_hours",
+      "value": {
+        "parameterRef": "withinHours"
+      }
+    },
+    {
+      "op": "dedupe",
+      "keys": [
+        "canonicalUrl"
+      ]
+    },
+    {
+      "op": "sort",
+      "field": "publishedAt",
+      "direction": "desc"
+    },
+    {
+      "op": "limit",
+      "value": {
+        "parameterRef": "limit"
+      }
+    },
+    {
+      "op": "summarize",
+      "language": "zh-CN",
+      "maxChars": 180
+    }
+  ],
+  "articleFetch": {
+    "allowedHosts": [
+      "feeds.bbci.co.uk",
+      "www.bbc.com",
+      "www.bbc.co.uk",
+      "bbc.com",
+      "bbc.co.uk"
+    ],
+    "bodySelectors": [
+      "[data-testid=rich-text]"
+    ],
+    "excludeSelectors": [
+      ".social-share",
+      ".share-tools",
+      ".related-posts",
+      ".related-articles",
+      ".ad-container",
+      ".advertisement-container"
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "id": "news.blocksandfiles",
+  "version": "1.0.0",
+  "name": "Blocks & Files",
+  "outputType": "article",
+  "description": "存储产业报道；涉及厂商性能宣称时保留说法归属和测试条件。",
+  "publisherType": "editorial",
+  "defaultSectionId": "technology",
+  "minEngineVersion": "1.0.0",
+  "connector": {
+    "type": "rss",
+    "url": "https://www.blocksandfiles.com/?lab_viewport=rss",
+    "allowedHosts": [
+      "www.blocksandfiles.com",
+      "blocksandfiles.com"
+    ]
+  },
+  "parameters": {
+    "limit": {
+      "type": "integer",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "withinHours": {
+      "type": "integer",
+      "default": 48,
+      "minimum": 1,
+      "maximum": 87600
+    }
+  },
+  "pipeline": [
+    {
+      "op": "filter",
+      "field": "publishedAt",
+      "operator": "within_hours",
+      "value": {
+        "parameterRef": "withinHours"
+      }
+    },
+    {
+      "op": "dedupe",
+      "keys": [
+        "canonicalUrl"
+      ]
+    },
+    {
+      "op": "sort",
+      "field": "publishedAt",
+      "direction": "desc"
+    },
+    {
+      "op": "limit",
+      "value": {
+        "parameterRef": "limit"
+      }
+    },
+    {
+      "op": "summarize",
+      "language": "zh-CN",
+      "maxChars": 180
+    }
+  ],
+  "articleFetch": {
+    "allowedHosts": [
+      "www.blocksandfiles.com",
+      "blocksandfiles.com"
+    ],
+    "bodySelectors": [
+      "#main .bodytext"
+    ],
+    "excludeSelectors": [
+      ".social-share",
+      ".share-tools",
+      ".related-posts",
+      ".related-articles",
+      ".ad-container",
+      ".advertisement-container"
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "official.nasa",
+  "version": "1.0.0",
+  "name": "NASA 科学与技术",
+  "outputType": "article",
+  "description": "NASA 官方 RSS；正文从 NASA 与 NASA Science 页面提取。此文件是外部导入验收样例，不随应用内置目录安装。",
+  "publisherType": "official",
+  "defaultSectionId": "technology",
+  "minEngineVersion": "1.0.0",
+  "connector": {
+    "type": "rss",
+    "url": "https://www.nasa.gov/feed/",
+    "allowedHosts": [
+      "www.nasa.gov"
+    ]
+  },
+  "parameters": {
+    "limit": {
+      "type": "integer",
+      "default": 3,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "withinHours": {
+      "type": "integer",
+      "default": 168,
+      "minimum": 1,
+      "maximum": 168
+    }
+  },
+  "pipeline": [
+    {
+      "op": "filter",
+      "field": "publishedAt",
+      "operator": "within_hours",
+      "value": {
+        "parameterRef": "withinHours"
+      }
+    },
+    {
+      "op": "dedupe",
+      "keys": [
+        "canonicalUrl"
+      ]
+    },
+    {
+      "op": "sort",
+      "field": "publishedAt",
+      "direction": "desc"
+    },
+    {
+      "op": "limit",
+      "value": {
+        "parameterRef": "limit"
+      }
+    },
+    {
+      "op": "summarize",
+      "language": "zh-CN",
+      "maxChars": 180
+    }
+  ],
+  "articleFetch": {
+    "allowedHosts": [
+      "www.nasa.gov",
+      "science.nasa.gov"
+    ],
+    "bodySelectors": [
+      "article .entry-content"
+    ],
+    "excludeSelectors": [
+      ".wp-block-embed",
+      ".wp-block-image"
+    ],
+    "minCharacters": 300
+  }
+}

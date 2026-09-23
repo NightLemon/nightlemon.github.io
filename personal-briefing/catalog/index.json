@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "minEngineVersion": "1.0.0",
+  "templates": [
+    {
+      "id": "news.bbc",
+      "version": "1.0.0",
+      "url": "templates/news.bbc.json",
+      "sha256": "f571d549a20ef8d8182d3777ae494a3ad2538da5b99cac66be5204bb3050d596"
+    },
+    {
+      "id": "news.blocksandfiles",
+      "version": "1.0.0",
+      "url": "templates/news.blocksandfiles.json",
+      "sha256": "b17e7f15b3b8f93679cade667a4cde05ed5da9ff06aece2e72cd55567ba940f9"
+    },
+    {
+      "id": "news.huggingface",
+      "version": "1.0.0",
+      "url": "templates/news.huggingface.json",
+      "sha256": "d57bb07624c418a79b962f340a81ba42e20188d84165f6a9e8d19960c4534eec"
+    },
+    {
+      "id": "news.ithome",
+      "version": "1.0.0",
+      "url": "templates/news.ithome.json",
+      "sha256": "759e17a0aef02999683337b8a59d581d537748c6631b27d17cbe568cb6d58054"
+    },
+    {
+      "id": "news.npr",
+      "version": "1.0.0",
+      "url": "templates/news.npr.json",
+      "sha256": "3f7ccebbf7caa2d9fbdac405f330d7c2a3b260aeeda5a1dc85ea4e7517726d58"
+    },
+    {
+      "id": "news.semiconductor",
+      "version": "1.0.0",
+      "url": "templates/news.semiconductor.json",
+      "sha256": "4ebe1b5a7e4858ef629a010e389b89dfa2acff63d0a2b9f4324fd9908c67d7ab"
+    },
+    {
+      "id": "official.nasa",
+      "version": "1.0.0",
+      "url": "templates/official.nasa.json",
+      "sha256": "994f81bd30cb5035646a2b1a529afbfd037a9cc2fe23d8e943ee2220023c2364"
+    }
+  ]
+}
